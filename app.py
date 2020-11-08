@@ -11,12 +11,12 @@ redis_client = FlaskRedis(app)
 
 
 @app.route('/', methods=['GET'])
-def hello():
+def index():
     return render_template('index.html', unique_token=utils.generate_form_hash(redis_client))
 
 
 @app.route('/<hash>', methods=['GET'])
-def forward_to_url(hash):
+def redirect_to_url(hash):
     found_url = utils.check_url_exists(redis_client, hash)
     if found_url is not None:
         utils.increment_view_counter(redis_client, hash)
