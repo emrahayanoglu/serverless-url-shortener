@@ -1,0 +1,16 @@
+{
+    "dev": {
+        "s3_bucket": "url-shortener-zappa-bucket-emr",
+        "app_function": "app.app",
+        "parameter_depth": 1,
+        "aws_environment_variables": {
+            "REDIS_URL": "redis://shorturl-redis.zxxora.0001.euc1.cache.amazonaws.com:6379"
+        },
+        "vpc_config": {
+            "SubnetIds": ["subnet-4a14c906", "subnet-c4e729b8", "subnet-e183108b"],
+            "SecurityGroupIds": [ "sg-85d368f8" ]
+        },
+        "domain": "minurl.xyz",
+        "certificate_arn": "arn:aws:acm:us-east-1:994218877448:certificate/9a3231c0-3db6-4203-a0e0-03817b693b4a"
+    }
+}
