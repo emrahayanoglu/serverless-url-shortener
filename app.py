@@ -34,7 +34,7 @@ def create_hash():
                 return jsonify({'result': True, 'hash': found_hash})
             hash = utils.convert_to_hash(utils.get_and_increment_index(redis_client))
             utils.set_hash(redis_client, hash, url_param)
-            return jsonify({'result': True, 'short_url': 'https://minurl.xyz/{}'.format(hash)})
+            return jsonify({'result': True, 'short_url': '{}/{}'.format(request.headers.get('Origin'), hash)})
     return jsonify({'result': False})
 
 
